@@ -59,7 +59,7 @@ function fixMaps()
 {
   	local string S;
   	local MapFix F;
-  	log("%% MapFix Mutator v"$Version$" active %% utassault.net 2004-2007 %%");
+  	log("%% MapFix Mutator v"$Version$" active %% utassault.net 2004-2007 %%",'MapFixes');
 	S = Left(Self, InStr(Self, "."));
   	switch ( Caps(S) )
   	{
@@ -114,6 +114,12 @@ function fixMaps()
 		case "AS-DUNGEON]L[ALBETA2":
 			F = Spawn(class'fix_TheDungeons3Betas');
 			break;
+	}
+	// Handle all Saqqara maps
+	if (Left(S,10)~="AS-Saqqara")
+	{
+		log("%% Detected Saqqara",'MapFixes');
+		F = Spawn(class'fix_Saqqara');
 	}
 	if (F != None)
 	{
