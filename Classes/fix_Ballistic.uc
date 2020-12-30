@@ -35,34 +35,53 @@ function fixWalls()
 {
 	local TriggeredBlockAll BT;
 	local int i;
-	local vector BTVect[12];
-	local float BTHeight[12];
-	local float BTRadius[12];
+	local vector BTVect[32];
+	local float BTHeight[32];
+	local float BTRadius[32];
 
-	BTVect[0] = vect(-1202,-5576,-784); BTHeight[0]=500; BTRadius[0] = 55;
+	BTVect[0] = vect(-1202,-5670,-784); BTHeight[0]=500; BTRadius[0] = 55;
 	BTVect[1] = vect(-1165,-5642,-784); BTHeight[1]=500; BTRadius[1] = 20;
 	BTVect[2] = vect(-1239,-5642,-784); BTHeight[2]=500; BTRadius[2] = 20;
-	BTVect[3] = vect(-785,-5679,-784);  BTHeight[3]=500; BTRadius[3] = 55;
-	BTVect[4] = vect(-749,-5642,-784);  BTHeight[4]=500; BTRadius[4] = 20;
-	BTVect[5] = vect(-823,-5642,-784);  BTHeight[5]=500; BTRadius[5] = 20;
-	BTVect[6] = vect(-999,-5651,-384);  BTHeight[6]=100; BTRadius[6] = 95;
-	BTVect[7] = vect(-858,-5651,-384);  BTHeight[7]=100; BTRadius[7] = 95;
-	BTVect[8] = vect(-1130,-5651,-384); BTHeight[8]=100; BTRadius[8] = 95;
-	BTVect[9] = vect(-785,-5693,-784);  BTHeight[8]=500; BTRadius[8] = 55;
-	BTVect[10] = vect(-747,-5728,-784); BTHeight[8]=500; BTRadius[8] = 20;
-	BTVect[11] = vect(-817,-5728,-784); BTHeight[8]=500; BTRadius[8] = 20;
+	BTVect[3] = vect(-1220,-5645,-784); BTHeight[3]=500; BTRadius[3] = 20;
+	BTVect[4] = vect(-1186,-5645,-784); BTHeight[4]=500; BTRadius[4] = 20;
 
-	if (bDebug) log("<-- Ballistic Wall Fix #1");
-	for (i=0; i <= 11; i++)
+	BTVect[5] = vect(-785,-5670,-784);  BTHeight[5]=500; BTRadius[5] = 55;
+	BTVect[6] = vect(-749,-5642,-784);  BTHeight[6]=500; BTRadius[6] = 20;
+	BTVect[7] = vect(-823,-5642,-784);  BTHeight[7]=500; BTRadius[7] = 20;
+	BTVect[8] = vect(-805,-5645,-784); BTHeight[8]=500; BTRadius[8] = 20;
+	BTVect[9] = vect(-770,-5645,-784); BTHeight[9]=500; BTRadius[9] = 20;
+
+	BTVect[10] = vect(-999,-5651,-384);  BTHeight[10]=100; BTRadius[10] = 95;
+	BTVect[11] = vect(-858,-5651,-384);  BTHeight[11]=100; BTRadius[11] = 95;
+	BTVect[12] = vect(-1130,-5651,-384); BTHeight[12]=100; BTRadius[12] = 95;
+	BTVect[13] = vect(-785,-5693,-784);  BTHeight[13]=500; BTRadius[13] = 55;
+	BTVect[14] = vect(-747,-5728,-784); BTHeight[14]=500; BTRadius[14] = 20;
+	BTVect[15] = vect(-817,-5728,-784); BTHeight[15]=500; BTRadius[15] = 20;
+
+	BTVect[16] = vect(-2290,-3005,-435); BTHeight[16]=50; BTRadius[16] = 20;
+	BTVect[17] = vect(-2290,-2970,-435); BTHeight[17]=50; BTRadius[17] = 20;
+	BTVect[18] = vect(-2290,-2935,-435); BTHeight[18]=50; BTRadius[18] = 20;
+	BTVect[19] = vect(-2290,-2900,-435); BTHeight[19]=50; BTRadius[19] = 20;
+	BTVect[20] = vect(-2290,-2865,-435); BTHeight[20]=50; BTRadius[20] = 20;
+	BTVect[21] = vect(-2290,-2830,-435); BTHeight[21]=50; BTRadius[21] = 20;
+	BTVect[22] = vect(-2290,-2795,-435); BTHeight[22]=50; BTRadius[22] = 20;
+	BTVect[23] = vect(-2290,-2760,-435); BTHeight[23]=50; BTRadius[23] = 20;
+	BTVect[24] = vect(-2290,-2725,-435); BTHeight[24]=50; BTRadius[24] = 20;
+
+	if (bDebug) log("<-- Ballistic Wall Fixes");
+	for (i=0; i <= 31; i++)
 	{
-		BT = Spawn(class'TriggeredBlockAll',,, BTVect[i]);
-		BT.SetCollisionSize(BTRadius[i],BTHeight[i]);
-		BT.SetMode(true,true,true,false,false,false);
-		BT.bDebug = true;
-		BT.Tag = 'bxWallBlock';
-		if (bDebug) log("* Spawned BA - L:"@BT.Location@"/ R:"@BT.CollisionRadius@"/ H:"@BT.CollisionHeight);
+		if (BTHeight[i] > 0 && BTRadius[i] > 0)
+		{
+			BT = Spawn(class'TriggeredBlockAll',,, BTVect[i]);
+			BT.SetCollisionSize(BTRadius[i],BTHeight[i]);
+			BT.SetMode(true,true,true,false,false,false);
+			BT.bDebug = bDebug;
+			BT.Tag = 'bxWallBlock';
+			if (bDebug) log("* Spawned Wall Block - L:"@BT.Location@"/ R:"@BT.CollisionRadius@"/ H:"@BT.CollisionHeight);
+		}
 	}
-	if (bDebug) log("Ballistic Wall Fix #1 -->");
+	if (bDebug) log("Ballistic Wall Fixes -->");
 }
 
 function fixTele_ThanksToMyM()
