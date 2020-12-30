@@ -1,6 +1,7 @@
 //=============================================================================
 // Saqqara - timo@utassault.net - '//3iRd(o) 2020
 //  - Removes the music for this map since it crashes fMod.
+//  - To-Do: Consider discovering client version to see if this is needed.
 //=============================================================================
 class fix_Saqqara extends MapFix config(MapFixesLA11);
 var bool bTweaked;
@@ -20,9 +21,17 @@ function PostBeginPlay()
 		if (bEnabled && (Left(S,10) ~= "AS-Saqqara"))
 		{
 			PlayerSlot = 0;
-			if (bDebug)
-				log("%% Setting timer for Music update...",'MapFixes');
-			SetTimer(1.0,true);
+			if (Left(S,17) ~= "AS-SaqqaraPE_beta" || S ~= "AS-SaqqaraPE")
+			{
+				if (bDebug)
+					log("%% Saqqara: Map fix no longer needed with this version.",'MapFixes');
+			}
+			else
+			{
+				if (bDebug)
+					log("%% Saqqara: Setting timer for Music update...",'MapFixes');
+				SetTimer(1.0,true);
+			}
  		}
  	}
 }

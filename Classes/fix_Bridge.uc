@@ -4,6 +4,7 @@
 class fix_Bridge extends MapFix config(MapFixesLA11);
 
 var bool bTweaked;
+var() config float TreeRadiusFactor;
 var() config bool bEnabled;
 var() config bool bDebug;
 var() config bool bFixCannons;
@@ -18,24 +19,107 @@ function BeginPlay()
 	{
 		bTweaked = True;
 		S = Left(Self, InStr(Self, "."));
+
+		// Apply only to original Bridge
 		if (bEnabled && S~="AS-Bridge")
 		{
+			if (bDebug) log("* Applying Bridge fixes...");
+
 			fixBridgeBlackspots();
+			if (bDebug) log("* Blackspot fixes applied.");
 			
 			if (bFixCannons)
+			{
 				fixBridgeCannons();
+				if (bDebug) log("* Cannon fixes applied.");
+			}
 			if (bKillUWSpawn)
+			{
 				fixUWSpawn();
-			if (bTweakTrees)
-				tweakBridgeTrees();
+				if (bDebug) log("* Underwater Spawns killed.");
+			}
 			if (bIncludeLAS140Tweaks)
+			{
 				BridgeLASTweaks();
+				if (bDebug) log("* LAS tweaks re-applied.");
+			}
+		}
+		// Apply to all versions of Bridge
+		if (bEnabled && LefT(S,9)~="AS-Bridge")
+		{
+			if (bTweakTrees)
+			{
+				tweakBridgeTrees();
+				if (bDebug) log("* Tree collision changes applied.");
+			}
 		}
 	}
 }
 
 function tweakBridgeTrees() {
-	
+	local Tree2 T2;
+	local Tree3 T3;
+	local Tree4 T4;
+	local BlockAll TB;
+	local string SA;
+	local vector TBLocation;
+	if (bDebug) log("<-- Bridge Tree Fixes");
+	foreach AllActors(Class'UnrealShare.Tree2',T2)
+	{
+		SA = Mid(string(T2),InStr(string(T2),".") + 1);
+		TBLocation = (T2.Location)-vect(0,0,325);
+
+		T2.SetCollision(true,true,true); // Set all trees collide with everything
+
+		// SetCollisionSize(R,H)
+		T2.SetCollisionSize(TreeRadiusFactor*T2.DrawScale,160);
+		TB = Spawn(class'TriggeredBlockAll',,, TBLocation);
+		TB.SetCollisionSize(T2.CollisionRadius,200);
+		if (bDebug)
+		{
+			log("* Spawned BlockAll underneath "$SA$" - L:"@TB.Location@"/ R:"@TB.CollisionRadius@"/ H:"@TB.CollisionHeight);
+			TB.bHidden = false;
+			TB.DrawScale = T2.DrawScale+1;
+		}
+
+	}
+
+	foreach AllActors(Class'UnrealShare.Tree3',T3)
+	{
+		SA = Mid(string(T3),InStr(string(T3),".") + 1);
+		TBLocation = (T3.Location)-vect(0,0,325);
+
+		T3.SetCollision(true,true,true); // Set all trees collide with everything
+		T3.SetCollisionSize(TreeRadiusFactor*T3.DrawScale,160);
+		TB = Spawn(class'TriggeredBlockAll',,, TBLocation);
+		TB.SetCollisionSize(T3.CollisionRadius,200);
+		if (bDebug)
+		{
+			log("* Spawned BlockAll underneath "$SA$" - L:"@TB.Location@"/ R:"@TB.CollisionRadius@"/ H:"@TB.CollisionHeight);
+			TB.bHidden = false;
+			TB.DrawScale = T3.DrawScale+1;
+		}
+
+	}
+
+	foreach AllActors(Class'UnrealShare.Tree4',T4)
+	{
+		SA = Mid(string(T4),InStr(string(T4),".") + 1);
+		TBLocation = (T4.Location)-vect(0,0,325);
+
+		T4.SetCollision(true,true,true); // Set all trees collide with everything
+		T4.SetCollisionSize(TreeRadiusFactor*T4.DrawScale,160);
+		TB = Spawn(class'TriggeredBlockAll',,, TBLocation);
+		TB.SetCollisionSize(T4.CollisionRadius,200);
+		if (bDebug)
+		{
+			log("* Spawned BlockAll underneath "$SA$" - L:"@TB.Location@"/ R:"@TB.CollisionRadius@"/ H:"@TB.CollisionHeight);
+			TB.bHidden = false;
+			TB.DrawScale = T4.DrawScale+1;
+		}
+	}
+	if (bDebug) log("Bridge Tree Fixes -->");
+
 }
 
 function BridgeLASTweaks() {
@@ -51,9 +135,9 @@ function BridgeLASTweaks() {
 	Spawn(Class'RelevancyTrigger',,,vect(-515.00,-3640.00,620.00)).SetCollisionSize(128.0,80.0);
 	Spawn(Class'RelevancyTrigger',,,vect(1218.80,-3517.26,306.10)).SetCollisionSize(132.0,132.0);
 
-  foreach AllActors(Class'FortStandard',FS)
-  {
-    SA = Mid(string(FS),InStr(string(FS),".") + 1);
+	foreach AllActors(Class'FortStandard',FS)
+	{
+		SA = Mid(string(FS),InStr(string(FS),".") + 1);
 		if ( SA ~= "FortStandard3" )
 		{
 			FS.FortName = "The base";
@@ -76,7 +160,7 @@ function BridgeLASTweaks() {
 		}
 	}
 	foreach AllActors(Class'Mover',M)
-  {
+	{
 		SA = Mid(string(M),InStr(string(M),".") + 1);
 		if ( (SA ~= "Mover16") || (SA ~= "Mover17") || (SA ~= "Mover18") || (SA ~= "Mover19") )
 		{
@@ -194,7 +278,7 @@ function fixUWSpawn()
 				
 			}
 		}
-	foreach AllActors( class 'Dispatcher', D )
+		foreach AllActors( class 'Dispatcher', D )
 		{
 			if(D.Name == 'Dispatcher0')
 			{
@@ -217,4 +301,6 @@ function fixUWSpawn()
 defaultproperties
 {
      bEnabled=True
+     bTweakTrees=True
+     TreeRadiusFactor=20
 }

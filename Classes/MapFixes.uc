@@ -59,7 +59,7 @@ function fixMaps()
 {
   	local string S;
   	local MapFix F;
-  	log("%% MapFix Mutator v"$Version$" active %% utassault.net 2004-2007 %%",'MapFixes');
+  	log("%% MapFix Mutator v"$Version$" active %% utassault.net 2004-2020 %%",'MapFixes');
 	S = Left(Self, InStr(Self, "."));
   	switch ( Caps(S) )
   	{
@@ -258,5 +258,5 @@ simulated function Destroyed()
 defaultproperties
 {
      bMasterEnabled=True
-     Version="1.1 beta 090124-1739"
+     Version="1.1a 20201230-1530"
 }

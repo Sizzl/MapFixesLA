@@ -9,13 +9,15 @@ var() config bool bDebug;
 
 function BeginPlay()
 {
+	local string S;
 	Super.BeginPlay();
 	if (!bTweaked)
 	{
 		bTweaked = True;
-		if (bEnabled)
+		S = Left(Self, InStr(Self, "."));
+		if (bEnabled && (Left(S,12) ~= "AS-Ballistic"))
 		{
-			 	fixTele();
+			 	fixTele_ThanksToMyM();
 		 		fixWalls();
 		 		if (bIncludeLAS140Tweaks)
 		 			fixBallisticObjects();
@@ -63,7 +65,7 @@ function fixWalls()
 	if (bDebug) log("Ballistic Wall Fix #1 -->");
 }
 
-function fixTele()
+function fixTele_ThanksToMyM()
 {
   	local Dispatcher D;
 
