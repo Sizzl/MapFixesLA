@@ -1,7 +1,7 @@
 //=============================================================================
 // Golgotha][AL - timo@utassault.net - '//3iRd(o)
 //=============================================================================
-class fix_Golgotha2AL extends MapFix config(MapFixesLA11); // Info
+class fix_Golgotha2AL extends MapFix config(MapFixes); // Info
 
 var config bool bEnabled;
 var config bool bDebug;

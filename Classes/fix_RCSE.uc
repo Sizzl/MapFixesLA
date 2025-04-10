@@ -1,7 +1,7 @@
 //================================================================================
 // RocketCommandSE - timo@utassault.net - 2004 '//3iRd(o)
 //================================================================================
-class fix_RCSE extends MapFix config(MapFixesLA11);
+class fix_RCSE extends MapFix config(MapFixes);
 
 var bool bTweaked;
 var() config bool bEnabled;

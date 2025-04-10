@@ -1,7 +1,7 @@
 //===============================================================================================
 // AS-Riverbed3AL - timo@utassault.net - 2007
 //===============================================================================================
-class fix_Riverbed3AL extends MapFix config(MapFixesLA11);
+class fix_Riverbed3AL extends MapFix config(MapFixes);
 
 var bool bTweaked;
 var() config bool bEnabled;

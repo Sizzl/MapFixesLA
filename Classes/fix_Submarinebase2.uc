@@ -1,7 +1,7 @@
 //===============================================================================================
 // Submarinebase][ - timo@utassault.net - '//3iRd(o) pwns with another Mapfix - Dec'2004
 //===============================================================================================
-class fix_Submarinebase2 extends MapFix config(MapFixesLA11);
+class fix_Submarinebase2 extends MapFix config(MapFixes);
 
 var bool bTweaked;
 var config bool bDebug;

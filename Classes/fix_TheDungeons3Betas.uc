@@ -1,7 +1,7 @@
 //===============================================================================================
 // AS-TheDungeons3(betas) - timo@utassault.net - 2007
 //===============================================================================================
-class fix_TheDungeons3Betas extends MapFix config(MapFixesLA11);
+class fix_TheDungeons3Betas extends MapFix config(MapFixes);
 
 var bool bTweaked;
 var() config bool bEnabled;

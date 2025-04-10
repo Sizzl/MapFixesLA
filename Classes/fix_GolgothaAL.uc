@@ -1,7 +1,7 @@
 //===============================================================================================
 // AS-GolgothaAL - timo@utassault.net - 2007
 //===============================================================================================
-class fix_GolgothaAL extends MapFix config(MapFixesLA11);
+class fix_GolgothaAL extends MapFix config(MapFixes);
 
 var bool bTweaked;
 var() config bool bEnabled;
