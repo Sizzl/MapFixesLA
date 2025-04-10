@@ -1,7 +1,7 @@
 //=============================================================================
 // AutoRIP - timo@utassault.net - '//3iRd(o) 2006
 //=============================================================================
-class fix_AutoRIP extends MapFix config(MapFixesLA11);
+class fix_AutoRIP extends MapFix config(MapFixes);
 
 var bool bTweaked;
 var() config bool bEnabled;
@@ -26,6 +26,7 @@ function BeginPlay()
 function fixLASAutoRIP()
 {
 	local Actor A;
+	local string SA;
 
 	// Relevancy blackspot
 	Spawn(Class'RelevancyTrigger',,,vect(2911.0,3060.0,-62.0)).SetCollisionSize( 250.0, 80.0 );
@@ -33,6 +34,7 @@ function fixLASAutoRIP()
 	// Fix actors
 	foreach AllActors( Class'Actor', A )
 	{
+		SA = Left(A, InStr(A, "."));
 		if ( SA~="TeamTrigger6" || SA~="TeamTrigger7" || SA~="TeamTrigger8" || SA~="TeamTrigger9" || SA~="TeamTrigger10" || SA~="TeamTrigger11" || SA~="TeamTrigger12" || SA~="TeamTrigger13" || SA~="TeamTrigger14" || SA~="TeamTrigger15" || SA~="TeamTrigger16" || SA~="TeamTrigger17" || SA~="TeamTrigger18" || SA~="TeamTrigger19" || SA~="TeamTrigger20" || SA~="TeamTrigger21" || SA~="TeamTrigger22" || SA~="TeamTrigger23" || SA~="PressureZone0" )
 		{
 			A.Destroy();

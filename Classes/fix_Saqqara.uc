@@ -3,7 +3,7 @@
 //  - Removes the music for this map since it crashes fMod.
 //  - To-Do: Consider discovering client version to see if this is needed.
 //=============================================================================
-class fix_Saqqara extends MapFix config(MapFixesLA11);
+class fix_Saqqara extends MapFix config(MapFixes);
 var bool bTweaked;
 var() config bool bEnabled;
 var() config bool bDebug;

@@ -1,7 +1,7 @@
 //=============================================================================
 // Asthenosphere/AL - timo@utassault.net - '//3iRd(o) 2004
 //=============================================================================
-class fix_Asthenosphere extends MapFix config(MapFixesLA11);
+class fix_Asthenosphere extends MapFix config(MapFixes);
 
 var bool bTweaked;
 var() config bool bEnabled;

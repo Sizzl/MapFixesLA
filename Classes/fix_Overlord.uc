@@ -2,7 +2,7 @@
 // OverlordFix - timo@utassault.net
 //================================================================================
 
-class fix_Overlord extends MapFix config(MapFixesLA11);
+class fix_Overlord extends MapFix config(MapFixes);
 
 var bool bTweaked;
 var() config bool bFixBlackspots;

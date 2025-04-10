@@ -2,7 +2,7 @@
 // Coldersteel fixes - timo@utassault.net - '//3iRd(o) pwns with another Mapfix - Jan'2005
 // Additional Coldersteel Fixes - May 2005 - (cratos@utassault.net)
 //-----------------------------------------------------------
-class fix_ColderSteel extends MapFix config(MapFixesLA11);
+class fix_ColderSteel extends MapFix config(MapFixes);
 
 var bool bTweaked;
 var config bool bDebug;

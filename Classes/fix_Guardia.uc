@@ -1,7 +1,7 @@
 //===============================================================================================
 // Guardia fixes - timo@utassault.net - '//3iRd(o) pwns with another Mapfix - Jan'2005
 //===============================================================================================
-class fix_Guardia extends MapFix config(MapFixesLA11);
+class fix_Guardia extends MapFix config(MapFixes);
 
 var bool bTweaked;
 var config bool bDebug;

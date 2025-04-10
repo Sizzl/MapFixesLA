@@ -1,7 +1,7 @@
 //=============================================================================
 // Siege][ - timo@utassault.net - '//3iRd(o) 2004
 //=============================================================================
-class fix_Siege2 extends MapFix config(MapFixesLA11);
+class fix_Siege2 extends MapFix config(MapFixes);
 
 var bool bTweaked;
 var() config bool bEnabled;

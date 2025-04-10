@@ -1,7 +1,7 @@
 //===============================================================================================
 // AS-Bridge - timo@utassault.net - 2005-2007
 //===============================================================================================
-class fix_Bridge extends MapFix config(MapFixesLA11);
+class fix_Bridge extends MapFix config(MapFixes);
 
 var bool bTweaked;
 var() config float TreeRadiusFactor;

@@ -1,7 +1,7 @@
 //=============================================================================
 // zpASHackFix (timo@utassault.net) '//3iRd(o) 2004
 //=============================================================================
-class zzzpASHackFix extends Actor config(MapFixesLA11);
+class zzzpASHackFix extends Actor config(MapFixes);
 var() config bool bEnabled;
 var() config bool bDebug;
 

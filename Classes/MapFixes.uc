@@ -1,9 +1,9 @@
 //=============================================================================
-// MapFixesLA11.MapFixes mutator - © 2007 (timo@utassault.net)
-// Based on the ASPlus Assault Addon © 2004 '//3iRd(o)
+// MapFixesLA11.MapFixes mutator - Â© 2007 (timo@utassault.net)
+// Based on the ASPlus Assault Addon Â© 2004 '//3iRd(o)
 // Mutator handling codebits by Dawn - http://wiki.beyondunreal.com/wiki/Dawn
 //=============================================================================
-class MapFixes extends Mutator config(MapFixesLA11);
+class MapFixes extends Mutator config(MapFixes);
 
 var() config bool bMasterEnabled;
 var() config bool bMasterDebug;
@@ -63,6 +63,12 @@ function fixMaps()
 	S = Left(Self, InStr(Self, "."));
   	switch ( Caps(S) )
   	{
+		case "AS-ASTHENOSPHERE":
+			F = Spawn(class'fix_Asthenosphere');
+			break;
+		case "AS-AUTORIP":
+			F = Spawn(class'fix_AutoRIP');
+			break;
 		case "AS-BALLISTIC":
 			F = Spawn(class'fix_Ballistic');
 			break;
@@ -86,6 +92,9 @@ function fixMaps()
 			break;
 		case "AS-OVERLORD":
 			F = Spawn(class'fix_Overlord');
+			break;
+		case "AS-RIVERBED]L[AL":
+			F = Spawn(class'fix_Riverbed3AL');
 			break;
 		case "AS-ROCKETCOMMANDSE":
 			F = Spawn(class'fix_RCSE');

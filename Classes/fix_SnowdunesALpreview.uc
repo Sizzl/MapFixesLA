@@ -1,7 +1,7 @@
 //=============================================================================
 // SnowdunesAL_preview - timo@utassault.net - '//3iRd(o) 2006
 //=============================================================================
-class fix_SnowdunesALpreview extends MapFix config(MapFixesLA11);
+class fix_SnowdunesALpreview extends MapFix config(MapFixes);
 
 var bool bTweaked;
 var() config bool bDebug;
