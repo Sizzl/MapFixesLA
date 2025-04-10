@@ -75,6 +75,9 @@ function fixMaps()
 		case "AS-BRIDGE":
 			F = Spawn(class'fix_Bridge');
 			break;
+		case "AS-BRIDGEPV_BETA8":
+			F = Spawn(class'fix_BridgePV_beta8');
+			break;
 		case "AS-COLDERSTEEL":
 			F = Spawn(class'fix_Coldersteel');
 			break;
